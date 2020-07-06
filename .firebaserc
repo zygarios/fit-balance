@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fit-balance-b4673": {
+      "hosting": {
+        "fit-balance": [
+          "fit-balance-b4673"
+        ]
+      }
+    }
+  }
+}
