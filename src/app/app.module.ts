@@ -4,17 +4,22 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { HeaderComponent } from './header/header.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { RouterModule } from "@angular/router";
+import { AppRoutingModule } from "./app-routing.module";
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
