@@ -5,7 +5,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { HomepageComponent } from './homepage/homepage.component';
 
