@@ -1,1 +1,158 @@
+@import '~@angular/material/theming';
+@include mat-core();
 
+$fit-balance-primary: mat-palette($mat-indigo);
+$fit-balance-accent: mat-palette($mat-pink, A200, A100, A400);
+$fit-balance-warn: mat-palette($mat-red);
+
+$fit-balance-theme: mat-light-theme((color: (primary: $fit-balance-primary,
+      accent: $fit-balance-accent,
+      warn: $fit-balance-warn,
+    )));
+@include angular-material-theme($fit-balance-theme);
+
+// --------------------------
+// --------------------------
+
+
+
+
+// colors
+$accept-color:#22b573;
+$warning-color:#e22a58;
+$pri-color: #f4d05b;
+$pri-color-stronger: #eca500;
+$pri-color-lighter: #fff7de;
+$sec-color: #009faa;
+$sec-color-stronger: #05828a;
+$dark-gray: #505050;
+// other variables
+$border-radius: 10px;
+
+
+//mixins
+
+
+// basic buttons (classic and small)
+@mixin nibble-btn {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  background: $sec-color;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 18px;
+  transition: background .2s;
+
+  &:hover {
+    background: lighten($sec-color, 3%);
+  }
+
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  box-shadow: 2px 2px 2px rgba(black, .4);
+
+  &.small-btn {
+    height: 30px;
+    font-size: 16px;
+  }
+}
+
+// buttons with moving icon action (clasic and small)
+@mixin nibble-btn-action {
+  @include nibble-btn;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  mat-icon {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%);
+    color: $dark-gray;
+    height: 42px;
+    width: 42px;
+    line-height: 42px;
+    font-size: 30px;
+    transition: left .7s;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: white;
+      border-radius: $border-radius;
+      box-shadow: 2px 2px 3px 1px rgba(black, .4);
+      z-index: -1;
+      transition: transform .7s;
+    }
+  }
+
+  &.small-btn {
+
+    mat-icon {
+      height: 38px;
+      width: 38px;
+      line-height: 38px;
+      left: -25px;
+
+    }
+  }
+
+  &.active {
+
+    mat-icon {
+      left: calc(100% - 5px);
+
+      &:before {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+// --------------------------
+// --------------------------
+
+
+// global styles
+.nibble-btn {
+  @include nibble-btn;
+}
+
+.nibble-btn-action {
+  @include nibble-btn-action;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Baloo Chettan 2',
+    "Helvetica Neue",
+    sans-serif;
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+}
+
+// buttons
+// <button class='nibble-btn'(click)="click()"[class.active]="isClicked"><mat-icon>delete_outline</mat-icon>Edytuj </button>
+
+// <button class='nibble-btn-action small-btn'(click)="click()"[class.active]="isClicked"[@fadeInOut]><mat-icon>delete_outline</mat-icon>Edytuj </button>
